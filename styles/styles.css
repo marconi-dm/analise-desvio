@@ -44,13 +44,6 @@ body, html {
     padding: 0.5em;
     border-radius: 5px;
     text-align: center;
-
-
-    appearance: none; /* Remove estilo padrão */
-    -webkit-appearance: none; /* Remove estilo padrão no Safari */
-    -moz-appearance: none; /* Remove estilo padrão no Firefox */
-    background-color: #fff; /* Define uma cor de fundo */
-    border: 1px solid #ccc; /* Define a borda */
 }
 
 #load {
