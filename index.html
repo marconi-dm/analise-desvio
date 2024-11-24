@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <title>Análise de perdas</title>
+</head>
+<body>
+    <form id="uploadForm">
+        <div id="load">
+            <p>Carregando<span id="dots"></span></p>
+
+        </div>
+        <div class="form-container">
+            <h1>Envie Arquivo Excel para Processamento</h1>
+    
+            <!-- Campo para título -->
+             <div id="select-container">
+                <label for="titleSelect">Escolha um título:</label>
+                    <select id="titleSelect" name="title">
+                        <option value="" disabled selected>Selecione um título</option>
+                        <option value="Troca + Inventario">Troca + Inventario</option>
+                        <option value="Troca">Troca</option>
+                        <option value="Inventario">Inventario</option>
+                    </select>
+            </div>
+            <!-- Campo para upload do arquivo -->
+            <input type="file" id="fileInput" name="file" accept=".xlsx" />
+            <label for="fileInput" class="custom-upload-btn">Escolher Arquivo</label>
+            <label for="custom-upload-btn" class="file"></label>
+            
+            <!-- Botão para enviar -->
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+</body>
+
+<script src="./scripts/app.js"></script>
+</html>
