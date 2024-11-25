@@ -42,37 +42,39 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
             method: 'POST',
             body: formData
         });
-
+    
         if (response.ok) {
             console.log('Arquivo enviado com sucesso!');
-            const data = await response.blob(); // Para salvar o PDF retornado
+            const data = await response.blob();
             const url = window.URL.createObjectURL(data);
-
+    
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
             if (isMobile) {
-                window.open(url, '_blank');
+                window.open(url, '_blank'); // Fallback para dispositivos móveis
             } else {
-
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = 'data.pdf'; // Nome do arquivo baixado
+                a.download = 'data.pdf';
                 document.body.appendChild(a);
                 a.click();
                 a.remove();
             }
-
-            
-
+    
+            // Revoga o URL temporário
             window.URL.revokeObjectURL(url);
-            location.reload();
+    
+            // Recarrega a página após um pequeno atraso
+            setTimeout(() => {
+                location.reload();
+            }, 500);
         } else {
             console.log('Erro ao enviar o arquivo:', response.statusText);
         }
     } catch (error) {
         console.error('Erro na requisição:', error);
     } finally {
-
-        loadingElement.style.display = 'none'
+        loadingElement.style.display = 'none'; // Esconde o loading no final
     }
     
 })
