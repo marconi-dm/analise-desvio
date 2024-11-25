@@ -47,14 +47,23 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
             console.log('Arquivo enviado com sucesso!');
             const data = await response.blob(); // Para salvar o PDF retornado
             const url = window.URL.createObjectURL(data);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'data.pdf'; // Nome do arquivo baixado
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
 
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile) {
+                window.open(url, '_blank');
+            } else {
 
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'data.pdf'; // Nome do arquivo baixado
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+            }
+
+            
+
+            window.URL.revokeObjectURL(url);
             location.reload();
         } else {
             console.log('Erro ao enviar o arquivo:', response.statusText);
