@@ -52,6 +52,10 @@ body, html {
     font-size: 30px;
 }
 
+.form-container h1 {
+    font-size: 20px;
+}
+
 .custom-upload-btn {
     cursor: pointer;
     padding: 10px 20px;
